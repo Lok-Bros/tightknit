@@ -1,0 +1,11 @@
+--markup markdown
+--title "Tightknit API Client Documentation"
+--protected
+--private
+--embed-mixins
+--readme README.md
+--output-dir doc/yard
+lib/**/*.rb
+-
+LICENSE.txt
+CHANGELOG.md 
