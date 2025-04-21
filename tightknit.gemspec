@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
 
   spec.summary = "Ruby client for the Tightknit API"
   spec.description = "A Ruby client for interacting with the Tightknit API to manage calendar events and more."
-  spec.homepage = "https://github.com/saalik/tightknit"
+  spec.homepage = "https://github.com/lok-bros/tightknit"
   spec.license = "MIT"
   spec.required_ruby_version = ">= 3.1.0"
 
