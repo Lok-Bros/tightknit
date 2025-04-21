@@ -34,9 +34,6 @@ client = Tightknit::Client.new(api_key: 'your_api_key')
 
 ### Calendar Events
 
-Currently, listing all CalendarEvents and getting a single CalendarEvent is supported.
-If you need more features here, feel free to contribute or chat with us: hello@lokbros.com
-
 #### List Events
 
 ```ruby
@@ -117,7 +114,3 @@ Get in touch with us anytime: hello@lokbros.com
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
 
 Maintained by [LokBros Studio](https://lokbros.com).
-
-## Code of Conduct
-
-Everyone interacting in the Tightknit project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/tightknit/blob/main/CODE_OF_CONDUCT.md).
