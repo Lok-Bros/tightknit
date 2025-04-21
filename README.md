@@ -1,6 +1,9 @@
-# Tightknit
+# Tightknit 
+### 💎 + 🧶 = 🎉
 
-A Ruby client for the Tightknit API.
+A Ruby client for the [Tightknit](https://tightknit.ai) API.
+
+[Official API docs](https://docs.tightknit.ai)
 
 ## Installation
 
@@ -10,7 +13,7 @@ Install the gem and add to the application's Gemfile by executing:
 bundle add tightknit
 ```
 
-If bundler is not being used to manage dependencies, install the gem by executing:
+If bundler is not being used to manage dependencies, install the gem with:
 
 ```bash
 gem install tightknit
@@ -18,34 +21,30 @@ gem install tightknit
 
 ## Usage
 
-### Configuration
+### Creating a Client
 
-Configure the Tightknit client with your API key:
+Create a Tightknit client with your API key:
 
 ```ruby
 require 'tightknit'
 
-# Configure globally
-Tightknit.configure do |config|
-  config.api_key = 'your_api_key'
-  # Optional: override the base URL if needed
-  # config.base_url = 'https://api.tightknit.dev/admin/v0/'
-end
-
-# Or create a client instance with specific configuration
+# Create a client with your API key
 client = Tightknit::Client.new(api_key: 'your_api_key')
 ```
 
 ### Calendar Events
 
+Currently, listing all CalendarEvents and getting a single CalendarEvent is supported.
+If you need more features here, feel free to contribute or chat with us: hello@lokbros.com
+
 #### List Events
 
 ```ruby
 # Get events with default parameters (page 0, per_page 10, status 'published')
-events = Tightknit.client.calendar_events.list
+events = client.calendar_events.list
 
 # With custom parameters
-events = Tightknit.client.calendar_events.list(
+events = client.calendar_events.list(
   page: 1,
   per_page: 20,
   time_filter: 'upcoming',
@@ -59,7 +58,7 @@ events = Tightknit.client.calendar_events.list(
 #### Get All Events (Both Past and Upcoming)
 
 ```ruby
-all_events = Tightknit.client.calendar_events.all(
+all_events = client.calendar_events.all(
   page: 0,
   per_page: 10,
   status: 'published'
@@ -69,48 +68,14 @@ all_events = Tightknit.client.calendar_events.all(
 #### Get a Specific Event
 
 ```ruby
-event = Tightknit.client.calendar_events.get('event_id')
-```
-
-#### Create an Event
-
-```ruby
-event_data = {
-  title: 'Event Title',
-  description: 'Event Description',
-  start_date: Time.now.iso8601,
-  end_date: (Time.now + 60*60*2).iso8601, # 2 hours later
-  location_type: 'virtual',
-  location: 'Virtual',
-  is_unlisted: false,
-  status: 'published'
-}
-
-result = Tightknit.client.calendar_events.create(event_data)
-```
-
-#### Update an Event
-
-```ruby
-event_data = {
-  title: 'Updated Event Title',
-  description: 'Updated Event Description'
-}
-
-result = Tightknit.client.calendar_events.update('event_id', event_data)
-```
-
-#### Delete an Event
-
-```ruby
-result = Tightknit.client.calendar_events.delete('event_id')
+event = client.calendar_events.get('event_id')
 ```
 
 #### Format an Event for Display
 
 ```ruby
-event = Tightknit.client.calendar_events.get('event_id')
-formatted_event = Tightknit.client.calendar_events.format(event[:data])
+event = client.calendar_events.get('event_id')
+formatted_event = client.calendar_events.format_data(event[:data])
 ```
 
 ## Documentation
@@ -137,15 +102,21 @@ bundle exec rake yard_open
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
 
+Note that if you're adding new API routes, you'll need to add a `.env` file to test requests with your Tightknit API credentials. You can rely on our stubbed VCR cassettes for exisiting routes.
+
 To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and the created tag, and push the `.gem` file to [rubygems.org](https://rubygems.org).
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/saalik/tightknit.
+Bug reports and pull requests are welcome on GitHub at https://github.com/Lok-Bros/tightknit.
+
+Get in touch with us anytime: hello@lokbros.com
 
 ## License
 
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+
+Maintained by [LokBros Studio](https://lokbros.com).
 
 ## Code of Conduct
 

@@ -7,32 +7,23 @@ module Tightknit
   # The Client class is the main entry point for interacting with the Tightknit API.
   # It handles the HTTP connection and provides access to the various API resources.
   #
-  # @example Creating a client with global configuration
-  #   Tightknit.configure do |config|
-  #     config.api_key = "your_api_key"
-  #   end
-  #   
-  #   client = Tightknit.client
-  #
-  # @example Creating a client with specific configuration
+  # @example Creating a client
   #   client = Tightknit::Client.new(api_key: "your_api_key")
-  #
+  #   
   class Client
     # @return [Faraday::Connection] The Faraday connection object used for HTTP requests
     attr_reader :conn
     
     # Initialize a new Tightknit API client
     #
-    # @param api_key [String, nil] The API key to use for authentication. If nil, uses the global configuration.
-    # @param base_url [String, nil] The base URL for the API. If nil, uses the global configuration.
-    # @raise [Tightknit::Error] If no API key is provided or configured
-    def initialize(api_key: nil, base_url: nil)
-      @api_key = api_key || Tightknit.configuration.api_key
-      @base_url = base_url || Tightknit.configuration.base_url
+    # @param api_key [String] The API key to use for authentication
+    # @raise [Tightknit::Error] If no API key is provided
+    def initialize(api_key:)
+      @api_key = api_key
       
       raise Error, "API key is required" unless @api_key
       
-      @conn = Faraday.new(url: @base_url) do |faraday|
+      @conn = Faraday.new(url: BASE_URL) do |faraday|
         faraday.headers["Authorization"] = "Bearer #{@api_key}"
         faraday.headers["Content-Type"] = "application/json"
         faraday.adapter Faraday.default_adapter
@@ -53,37 +44,10 @@ module Tightknit
     # @return [Hash] The parsed JSON response
     # @raise [Tightknit::Error] If the request fails
     def get(path, params = {})
-      handle_response(@conn.get(path, params))
-    end
-    
-    # Make a POST request to the API
-    #
-    # @param path [String] The path to request
-    # @param body [Hash] The request body
-    # @return [Hash] The parsed JSON response
-    # @raise [Tightknit::Error] If the request fails
-    def post(path, body = {})
-      handle_response(@conn.post(path, body.to_json))
-    end
-    
-    # Make a PUT request to the API
-    #
-    # @param path [String] The path to request
-    # @param body [Hash] The request body
-    # @return [Hash] The parsed JSON response
-    # @raise [Tightknit::Error] If the request fails
-    def put(path, body = {})
-      handle_response(@conn.put(path, body.to_json))
-    end
-    
-    # Make a DELETE request to the API
-    #
-    # @param path [String] The path to request
-    # @param params [Hash] The query parameters to include
-    # @return [Hash] The parsed JSON response
-    # @raise [Tightknit::Error] If the request fails
-    def delete(path, params = {})
-      handle_response(@conn.delete(path, params))
+      response = @conn.get(path, params)
+      handle_response(response)
+    rescue Faraday::Error => e
+      handle_error(e)
     end
     
     private
@@ -107,6 +71,14 @@ module Tightknit
         
         raise Error, "API Error (#{response.status}): #{error_message}"
       end
+    end
+    
+    # Handle Faraday errors
+    #
+    # @param error [Faraday::Error] The Faraday error
+    # @raise [Tightknit::Error] A wrapped error with more context
+    def handle_error(error)
+      raise Error, "Network Error: #{error.message}"
     end
   end
 end 

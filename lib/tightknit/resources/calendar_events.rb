@@ -102,97 +102,37 @@ module Tightknit
         @client.get("calendar_events/#{event_id}")
       end
       
-      # Create a calendar event
+      # Format event data for the API
       #
-      # @param event_data [Hash] The event data
-      # @option event_data [String] :title The title of the event
-      # @option event_data [String] :description The description of the event
-      # @option event_data [String] :start_date The start date of the event in ISO8601 format
-      # @option event_data [String] :end_date The end date of the event in ISO8601 format
-      # @option event_data [String] :location_type The type of location ('virtual' or 'physical')
-      # @option event_data [String] :location The location of the event
-      # @option event_data [Boolean] :is_unlisted Whether the event is unlisted
-      # @option event_data [String] :status The status of the event ('published', 'draft', or 'cancelled')
-      # @return [Hash] Response containing the created event
-      # @raise [Tightknit::Error] If the event cannot be created
-      def create(event_data)
-        @client.post('calendar_events', event_data)
-      end
-      
-      # Update a calendar event
-      #
-      # @param event_id [String] The ID of the event to update
-      # @param event_data [Hash] The updated event data
-      # @return [Hash] Response containing the updated event
-      # @raise [Tightknit::Error] If the event cannot be updated
-      def update(event_id, event_data)
-        @client.put("calendar_events/#{event_id}", event_data)
-      end
-      
-      # Delete a calendar event
-      #
-      # @param event_id [String] The ID of the event to delete
-      # @return [Hash] Response indicating success or failure
-      # @raise [Tightknit::Error] If the event cannot be deleted
-      def delete(event_id)
-        @client.delete("calendar_events/#{event_id}")
-      end
-      
-      # Format an event for display
-      #
-      # @param event [Hash] The event data from the API
-      # @return [Hash] Formatted event data
-      def format(event)
-        # Extract description from Slack blocks if available
-        description = ""
-        if event[:description_slack_blocks] && event[:description_slack_blocks].is_a?(Array)
-          event[:description_slack_blocks].each do |block|
-            if block[:type] == "rich_text" && block[:elements] && block[:elements].is_a?(Array)
-              block[:elements].each do |element|
-                if element[:type] == "rich_text_section" && element[:elements] && element[:elements].is_a?(Array)
-                  element[:elements].each do |text_element|
-                    description += text_element[:text] if text_element[:text]
-                  end
-                end
-              end
-            end
-          end
+      # @param event_data [Hash] The raw event data
+      # @return [Hash] The formatted event data
+      # @private
+      def format_data(event_data)
+        # Create a new hash to avoid modifying the original
+        formatted = event_data.dup
+        
+        # Format description if it's a string
+        if formatted[:description].is_a?(String)
+          formatted[:description] = { text: formatted[:description] }
         end
         
-        # Use plain description if Slack blocks parsing failed
-        description = event[:description] if description.empty? && event[:description]
+        # Format recap if it's a string
+        if formatted[:recap].is_a?(String)
+          formatted[:recap] = { text: formatted[:recap] }
+        end
         
-        # Convert Slack blocks to HTML
-        description_html = Tightknit::Utils::HtmlFormatter.slack_blocks_to_html(event[:description_slack_blocks])
+        # Format hosts if it's an array of IDs
+        if formatted[:hosts].is_a?(Array)
+          formatted[:hosts] = { slack_user_ids: formatted[:hosts] }
+        end
         
-        # Get host and speaker information
-        hosts = event[:hosts] || []
-        speakers = event[:speakers] || []
+        # Format speakers if it's an array of IDs
+        if formatted[:speakers].is_a?(Array)
+          formatted[:speakers] = { slack_user_ids: formatted[:speakers] }
+        end
         
-        # Format the event data
-        {
-          id: event[:id],
-          title: event[:title],
-          description: description,
-          description_html: description_html,
-          description_slack_blocks: event[:description_slack_blocks],
-          date: event[:start_date] ? Time.parse(event[:start_date]).strftime("%Y-%m-%d") : nil,
-          location: event[:location] || (event[:location_type] == "virtual" ? "Virtual Event" : nil),
-          image_url: event[:cover_image_url] || "https://images.unsplash.com/photo-1591115765373-5207764f72e4?q=80&w=2940&auto=format&fit=crop",
-          tickets_url: event[:link] || "#",
-          status: event[:status] || "upcoming",
-          start_time: event[:start_date],
-          end_time: event[:end_date],
-          hosts: hosts.map { |h| { 
-            name: h[:preferred_name] || "#{h[:first_name]} #{h[:last_name]}".strip, 
-            image: h[:slack_image_72] 
-          }},
-          speakers: speakers.map { |s| { 
-            name: s[:preferred_name] || "#{s[:first_name]} #{s[:last_name]}".strip, 
-            image: s[:slack_image_72] 
-          }}
-        }
-      end
+        formatted
+      end      
     end
   end
 end 
