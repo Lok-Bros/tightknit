@@ -6,6 +6,8 @@ require "mocha/minitest"
 
 class FeedsTest < Minitest::Test
   def setup
+    skip "Skipping API integration tests in CI" if ENV["CI"]
+    
     api_key = ENV["TIGHTKNIT_API_KEY"] || "test_api_key"
     @client = Tightknit::Client.new(api_key: api_key)
   end
