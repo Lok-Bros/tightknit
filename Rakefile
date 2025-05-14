@@ -14,7 +14,7 @@ begin
     t.options = ["--output-dir", "doc/yard"]
     t.stats_options = ["--list-undoc"]
   end
-  
+
   desc "Generate YARD documentation and open in browser"
   task :yard_open do
     Rake::Task["yard"].invoke
