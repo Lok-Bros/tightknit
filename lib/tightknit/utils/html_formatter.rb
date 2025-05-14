@@ -23,7 +23,7 @@ module Tightknit
     #       ]
     #     }
     #   ]
-    #   
+    #
     #   html = Tightknit::Utils::HtmlFormatter.slack_blocks_to_html(blocks)
     #   # => "<p class='mb-4'>Hello, world!</p>"
     #
@@ -38,12 +38,12 @@ module Tightknit
         # @return [String] HTML representation of the Slack blocks
         def slack_blocks_to_html(blocks)
           return "" unless blocks.is_a?(Array)
-          
+
           html = ""
-          
+
           blocks.each do |block|
             next unless block.is_a?(Hash) && block[:type] == "rich_text" && block[:elements].is_a?(Array)
-            
+
             block[:elements].each do |element|
               if element[:type] == "rich_text_section" && element[:elements].is_a?(Array)
                 # Add a paragraph with margin for spacing
@@ -86,12 +86,12 @@ module Tightknit
               end
             end
           end
-          
+
           html
         end
-        
+
         private
-        
+
         # Process a text element from Slack blocks
         #
         # This method takes a text element from Slack blocks and converts it to HTML.
@@ -101,10 +101,10 @@ module Tightknit
         # @return [String] HTML representation of the text element
         def process_text_element(element)
           return "" unless element.is_a?(Hash)
-          
+
           if element[:type] == "text"
             text = element[:text].to_s
-            
+
             if element[:style]
               if element[:style][:bold]
                 return "<strong>#{text}</strong>"
@@ -116,15 +116,15 @@ module Tightknit
                 return "<code>#{text}</code>"
               end
             end
-            
+
             return text
           elsif element[:type] == "link"
             return "<a href='#{element[:url]}' target='_blank' class='text-primary hover:underline'>#{element[:text]}</a>"
           end
-          
+
           ""
         end
       end
     end
   end
-end 
+end

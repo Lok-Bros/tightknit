@@ -12,7 +12,7 @@ require "webmock/minitest"
 VCR.configure do |config|
   config.cassette_library_dir = "test/vcr_cassettes"
   config.hook_into :webmock
-  
+
   # Filter out sensitive information like API keys
   config.filter_sensitive_data("<API_KEY>") do |interaction|
     auth_header = interaction.request.headers["Authorization"]&.first
@@ -21,13 +21,13 @@ VCR.configure do |config|
       match[1] if match
     end
   end
-  
+
   # Allow localhost for CI/CD if needed
   config.ignore_localhost = true
-  
+
   # Configure VCR to ignore certain hosts if needed
   # config.ignore_hosts 'example.com', 'localhost', '127.0.0.1'
-  
+
   # Configure default cassette options
   config.default_cassette_options = {
     record: :once,

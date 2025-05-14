@@ -14,5 +14,5 @@ group :development, :test do
   gem "rake", "~> 13.0"
   gem "standard", "~> 1.3"
   gem "yard", "~> 0.9"
-  gem "redcarpet", "~> 3.6"  
+  gem "redcarpet", "~> 3.6"
 end

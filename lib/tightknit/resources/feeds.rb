@@ -25,7 +25,7 @@ module Tightknit
       def initialize(client)
         @client = client
       end
-      
+
       # Get a list of feeds in the community
       #
       # @param options [Hash] Options for pagination
@@ -35,15 +35,15 @@ module Tightknit
       def list(options = {})
         page = options[:page] || 0
         per_page = options[:per_page] || 10
-        
+
         params = {
           page: page,
           per_page: per_page
         }
-        
-        @client.get('feeds', params)
+
+        @client.get("feeds", params)
       end
-      
+
       # Get a specific feed
       #
       # @param feed_id [String] The ID of the feed to retrieve
@@ -52,7 +52,7 @@ module Tightknit
       def get(feed_id)
         @client.get("feeds/#{feed_id}")
       end
-      
+
       # Get posts from a specific feed
       #
       # @param feed_id [String] The ID of the feed to retrieve posts from
@@ -64,14 +64,14 @@ module Tightknit
       def posts(feed_id, options = {})
         page = options[:page] || 0
         per_page = options[:per_page] || 10
-        
+
         params = {
           page: page,
           per_page: per_page
         }
-        
+
         @client.get("feeds/#{feed_id}/posts", params)
       end
     end
   end
-end 
+end

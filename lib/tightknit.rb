@@ -16,7 +16,7 @@ require_relative "tightknit/utils/html_formatter"
 module Tightknit
   # Error class for Tightknit-specific exceptions
   class Error < StandardError; end
-  
+
   # Base URL for the Tightknit API
   BASE_URL = "https://api.tightknit.dev/admin/v0/"
 end
