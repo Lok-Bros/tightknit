@@ -3,6 +3,7 @@
 require_relative "tightknit/version"
 require_relative "tightknit/client"
 require_relative "tightknit/resources/calendar_events"
+require_relative "tightknit/resources/feeds"
 require_relative "tightknit/utils/html_formatter"
 
 # The Tightknit module is the main namespace for the Tightknit API client.

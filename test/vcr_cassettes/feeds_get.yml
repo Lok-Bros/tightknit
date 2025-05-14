@@ -1,0 +1,51 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.tightknit.dev/admin/v0/feeds/b7a0df7e-e867-4847-8577-3bed1774ac7c
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer <API_KEY>
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Faraday v2.12.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 14 May 2025 19:24:52 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Cf-Placement:
+      - local-BOS
+      Vary:
+      - Accept-Encoding
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 93fcc73ae9c73b87-BOS
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: '{"success":true,"data":{"id":"b7a0df7e-e867-4847-8577-3bed1774ac7c","label":"Announcements","slug":"announcements","is_unlisted":false,"banner_file_id":null,"emoji_icon":null,"list_view_display_format":"snippet","post_detail_display_format":"discussion","banner_file_url":null,"show_in_navigation_menu":true,"slack_channel_id":"C08FTB08V5M","slack_channel_num_members":4,"slack_channel_purpose_slack_blocks":[{"text":{"text":"Share
+        announcements and updates about company news.","type":"mrkdwn"},"type":"section"}],"slack_channel_purpose_slack_blocks_references":{"mentioned_slack_users":[],"mentioned_slack_channels":[],"custom_emojis":[],"urls":[]},"slack_channel_topic_slack_blocks":[{"text":{"text":"The
+        latest from LokBros Studio!","type":"mrkdwn"},"type":"section"}],"slack_channel_topic_slack_blocks_references":{"mentioned_slack_users":[],"mentioned_slack_channels":[],"custom_emojis":[],"urls":[]}}}'
+  recorded_at: Wed, 14 May 2025 19:24:52 GMT
+recorded_with: VCR 6.3.1

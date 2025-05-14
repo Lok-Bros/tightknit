@@ -37,6 +37,13 @@ module Tightknit
       @calendar_events ||= Resources::CalendarEvents.new(self)
     end
     
+    # Access the feeds resource
+    #
+    # @return [Tightknit::Resources::Feeds] The feeds resource
+    def feeds
+      @feeds ||= Resources::Feeds.new(self)
+    end
+    
     # Make a GET request to the API
     #
     # @param path [String] The path to request

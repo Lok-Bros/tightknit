@@ -75,6 +75,40 @@ event = client.calendar_events.get('event_id')
 formatted_event = client.calendar_events.format_data(event[:data])
 ```
 
+### Feeds
+
+#### List Feeds
+
+```ruby
+# Get feeds with default pagination (page 0, per_page 10)
+feeds = client.feeds.list
+
+# With custom pagination
+feeds = client.feeds.list(
+  page: 1,
+  per_page: 20
+)
+```
+
+#### Get a Specific Feed
+
+```ruby
+feed = client.feeds.get('feed_id')
+```
+
+#### Get Posts from a Feed
+
+```ruby
+# Get posts with default pagination (page 0, per_page 10)
+posts = client.feeds.posts('feed_id')
+
+# With custom pagination
+posts = client.feeds.posts('feed_id', 
+  page: 1,
+  per_page: 20
+)
+```
+
 ## Documentation
 
 The gem includes comprehensive YARD documentation. To generate the documentation, first ensure you have the required dependencies:

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module Tightknit
+  # The Utils module contains utility classes for various helper functions.
   module Utils
     # The HtmlFormatter class provides utilities for converting Slack blocks to HTML.
     # This is useful for displaying event descriptions that are stored in Slack block format.
