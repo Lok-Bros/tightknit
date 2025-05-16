@@ -2,5 +2,5 @@
 
 module Tightknit
   # Current version of the Tightknit gem
-  VERSION = "0.1.2"
+  VERSION = "0.1.3"
 end
