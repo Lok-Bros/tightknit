@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.tightknit.dev/admin/v0/feeds/b7a0df7e-e867-4847-8577-3bed1774ac7c/posts?page=0&per_page=10
+    uri: https://api.tightknit.ai/admin/v0/feeds/b7a0df7e-e867-4847-8577-3bed1774ac7c/posts?page=0&per_page=10
     body:
       encoding: US-ASCII
       string: ''
@@ -23,7 +23,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Wed, 14 May 2025 19:24:50 GMT
+      - Sat, 07 Feb 2026 03:55:00 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -33,19 +33,26 @@ http_interactions:
       Access-Control-Allow-Origin:
       - "*"
       Cf-Placement:
-      - local-BOS
+      - remote-LHR
+      Speculation-Rules:
+      - '"/cdn-cgi/speculation"'
       Vary:
-      - Accept-Encoding
+      - accept-encoding
       Server:
       - cloudflare
       Cf-Ray:
-      - 93fcc7266dfc8fc6-BOS
+      - 9c9ff2f5fd5c7b0e-EWR
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
-      string: '{"success":true,"data":{"page":0,"per_page":10,"count":1,"total_records":1,"total_pages":1,"has_next":false,"records":[{"id":"u580h2qjuc8x","created_at":"2025-05-14T19:16:38.630803+00:00","title":"LokBros
-        Studio Praises Tightknit for Building Online Communities","slug":"lokbros-studio-praises-tightknit-for-building-onli","feed_id":"b7a0df7e-e867-4847-8577-3bed1774ac7c","author_profile_id":"cfa233f7-a0ac-431e-8f94-27a286f2ac32","read_time_minutes":1,"file_attachments_count":0,"reactions_count":0,"comments_count":0,"slack_message":{"id":"48be2df9-5c99-4668-89f1-4837a1abd06c","message_ts":1747250195.525399,"blocks":[{"type":"rich_text","block_id":"UZA6H","elements":[{"type":"rich_text_section","elements":[{"text":"Hello
+      string: '{"success":true,"data":{"page":0,"per_page":10,"count":1,"total_records":1,"total_pages":1,"has_next":false,"records":[{"id":"u580h2qjuc8x","created_at":"2025-05-14
+        19:16:38.630803+00","updated_at":"2025-10-02 05:23:11.90921+00","content_created_at":"2025-05-14
+        19:16:35.525399+00","latest_activity_at":"2025-05-14 19:16:35.525399+00","title":"LokBros
+        Studio Praises Tightknit for Building Online Communities","slug":"lokbros-studio-praises-tightknit-for-building-onli","feed_id":"b7a0df7e-e867-4847-8577-3bed1774ac7c","post_detail_display_format":"discussion","author_profile_id":"cfa233f7-a0ac-431e-8f94-27a286f2ac32","body_prosemirror":null,"body_plaintext":"Hello
+        everyone! LokBros Studio is a huge fan of Tightknit. We think it''s the best
+        way to make an online community. The power of Slack + the superpowers of online
+        community builders. :yarn: :heart: :zap:","source":"slack","file_attachments_count":0,"reactions_count":0,"comments_count":0,"slack_message":{"id":"48be2df9-5c99-4668-89f1-4837a1abd06c","message_ts":"1747250195.525399","blocks":[{"type":"rich_text","block_id":"UZA6H","elements":[{"type":"rich_text_section","elements":[{"text":"Hello
         everyone! LokBros Studio is a huge fan of Tightknit. We think it''s the best
         way to make an online community. The power of Slack + the superpowers of online
         community builders. ","type":"text"},{"name":"yarn","type":"emoji","unicode":"1f9f6"},{"text":"
@@ -53,6 +60,7 @@ http_interactions:
         ","type":"text"},{"name":"zap","type":"emoji","unicode":"26a1"}]}]}],"markdown":"Hello
         everyone! LokBros Studio is a huge fan of Tightknit. We think it''s the best
         way to make an online community. The power of Slack + the superpowers of online
-        community builders. :yarn: :heart: :zap:","permalink":"https://lokbros-studio-hub.slack.com/archives/C08FTB08V5M/p1747250195525399","parent_slack_message_id":null},"author":{"profile_id":"cfa233f7-a0ac-431e-8f94-27a286f2ac32","created_at":"2025-03-07T21:27:39.926104+00:00","preferred_name":"Saalik","slack_user_id":"U08FTAZTVJT","slack_is_admin":true,"slack_is_bot":false,"slack_image_72":"https://avatars.slack-edge.com/2025-03-05/8553243603539_a17208ec0a2fe09127eb_72.jpg","slack_image_original":"https://avatars.slack-edge.com/2025-03-05/8553243603539_a17208ec0a2fe09127eb_original.jpg"},"feed":{"id":"b7a0df7e-e867-4847-8577-3bed1774ac7c","label":"Announcements","slug":"announcements"},"references":{"mentioned_slack_users":[],"mentioned_slack_channels":[],"custom_emojis":[],"urls":[]}}]}}'
-  recorded_at: Wed, 14 May 2025 19:24:50 GMT
+        community builders. :yarn: :heart: :zap:","permalink":"https://lokbros-studio-hub.slack.com/archives/C08FTB08V5M/p1747250195525399","parent_slack_message_id":null,"username":null,"icon":null},"cover_image_file_id":null,"cover_image_url":null,"author":{"profile_id":"cfa233f7-a0ac-431e-8f94-27a286f2ac32","created_at":"2025-03-07
+        21:27:39.926104+00","preferred_name":"Saalik","preferred_image_original":"https://avatars.slack-edge.com/2025-03-05/8553243603539_a17208ec0a2fe09127eb_original.jpg","preferred_image_1024":"https://avatars.slack-edge.com/2025-03-05/8553243603539_a17208ec0a2fe09127eb_1024.jpg","preferred_image_512":"https://avatars.slack-edge.com/2025-03-05/8553243603539_a17208ec0a2fe09127eb_512.jpg","preferred_image_192":"https://avatars.slack-edge.com/2025-03-05/8553243603539_a17208ec0a2fe09127eb_192.jpg","preferred_image_72":"https://avatars.slack-edge.com/2025-03-05/8553243603539_a17208ec0a2fe09127eb_72.jpg","preferred_image_48":"https://avatars.slack-edge.com/2025-03-05/8553243603539_a17208ec0a2fe09127eb_48.jpg","preferred_image_32":"https://avatars.slack-edge.com/2025-03-05/8553243603539_a17208ec0a2fe09127eb_32.jpg","preferred_image_24":"https://avatars.slack-edge.com/2025-03-05/8553243603539_a17208ec0a2fe09127eb_24.jpg","first_name":"Saalik","last_name":"","email":"saalik@lokbros.com","slack_user_id":"U08FTAZTVJT","slack_is_admin":true,"slack_is_bot":false,"slack_first_name":"Saalik","slack_last_name":"","slack_image_72":"https://avatars.slack-edge.com/2025-03-05/8553243603539_a17208ec0a2fe09127eb_72.jpg","slack_image_original":"https://avatars.slack-edge.com/2025-03-05/8553243603539_a17208ec0a2fe09127eb_original.jpg"},"feed":{"id":"b7a0df7e-e867-4847-8577-3bed1774ac7c","label":"Announcements","slug":"announcements"},"references":{"mentioned_slack_users":[],"mentioned_slack_channels":[],"custom_emojis":[],"urls":[]}}]}}'
+  recorded_at: Sat, 07 Feb 2026 03:55:00 GMT
 recorded_with: VCR 6.3.1

@@ -18,5 +18,5 @@ module Tightknit
   class Error < StandardError; end
 
   # Base URL for the Tightknit API
-  BASE_URL = "https://api.tightknit.dev/admin/v0/"
+  BASE_URL = "https://api.tightknit.ai/admin/v0/"
 end

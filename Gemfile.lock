@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    tightknit (0.1.2)
+    tightknit (0.1.3)
       faraday (~> 2.7)
       json (~> 2.6)
 
