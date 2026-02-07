@@ -8,7 +8,7 @@ class TightknitTest < Minitest::Test
   end
 
   def test_base_url_constant
-    assert_equal "https://api.tightknit.dev/admin/v0/", Tightknit::BASE_URL
+    assert_equal "https://api.tightknit.ai/admin/v0/", Tightknit::BASE_URL
   end
 
   def test_client_initialization
